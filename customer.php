@@ -42,8 +42,5 @@ class Customer{
         $result .= "You earned ".$frequentRenterPoints." frequent renter point";
         return $result;
     }
-
-    private function amountFor($aRental){
-        return $aRental->getCharge();
-    }
+    
 }
