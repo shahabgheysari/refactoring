@@ -31,12 +31,20 @@ class Customer{
             
             //show figures for this rental
             $result .= "\t".$each->getMovie()->getTitle()."\t".$each->getCharge()."\n";
-            $totalAmount += $each->getCharge();
         }
 
         //add footer lines
-        $result .= "Amount owed is ".$totalAmount."\n";
+        $result .= "Amount owed is ".$this->getTotalCharge()."\n";
         $result .= "You earned ".$frequentRenterPoints." frequent renter point";
+        return $result;
+    }
+
+    public function getTotalCharge(){
+        $result = 0;
+        $rentals = $this->_rentals;
+        foreach($rentals as $each){
+            $result += $each->getCharge();
+        }
         return $result;
     }
 
