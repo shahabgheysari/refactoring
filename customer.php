@@ -36,8 +36,7 @@ class Customer{
 
     public function getTotalCharge(){
         $result = 0;
-        $rentals = $this->_rentals;
-        foreach($rentals as $each){
+        foreach($this->_rentals as $each){
             $result += $each->getCharge();
         }
         return $result;
@@ -45,10 +44,21 @@ class Customer{
 
     public function getTotalFrequentRenterPoints(){
         $result = 0;
-        $rentals = $this->_rentals;
-        foreach($rentals as $each){
+        foreach($this->_rentals as $each){
             $result += $each->getFrequentRenterPoints();
         }
+        return $result;
+    }
+
+    public function htmlStatement(){
+        $result = "<H1>Rentals for <EM>".$this->getName()."</EM></H1><P>";
+        foreach($this->_rentals as $each){
+            //show figures for each rental
+            $result .= $each->getMovie()->getTitle().": ".$each->getCharge()."<BR>";
+        }
+        //add footer lines
+        $result .= "<P>You owe <EM>".$this->getTotalCharge()."</EM><P>";
+        $result .= "On this rental you earned <EM>".$this->getTotalFrequentRenterPoints()."</EM> frequent renter points<P>";
         return $result;
     }
 }

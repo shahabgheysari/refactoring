@@ -24,5 +24,7 @@ $customer->addRental($hereditaryRental);
 $customer->addRental($hotelTransylvania3Rental);
 
 echo $customer->statement();
+echo $customer->htmlStatement();
+
 
 ?>
