@@ -25,7 +25,7 @@ class Customer{
         $result = "Rental Record for ".$this->getName()."\n";
         foreach($rentals as $each){
             $thisAmount = 0;
-            $thisAmount = $this->amountFor($each);            
+            $thisAmount = $each->getCharge();            
             // add frequent renter points
             $frequentRenterPoints++;
             // add bonus for a two day new release rental
