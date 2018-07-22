@@ -1,4 +1,5 @@
 <?php 
+require('price.php');
 
 class Movie{
     
@@ -7,7 +8,7 @@ class Movie{
     public const NEW_RELEASE = 1;
 
     private $_title;
-    private $_pricecCode;
+    private $_price;
 
     function __construct($title, $priceCode){
         $this->_title = $title;
@@ -15,11 +16,23 @@ class Movie{
     }
 
     public function getPriceCode(){
-        return $this->_priceCode;
+        return $this->_price->getPriceCode();
     }
 
-    public function setPriceCode($priceCode){
-        $this->_priceCode = $priceCode;
+    public function setPriceCode($arg){
+        switch($arg){
+            case $this::REGULAR:
+                $this->_price = new RegularPrice();
+                break;
+            case $this::CHILDRENS:
+                $this->_price = new ChildrensPrice();
+                break;
+            case $this::NEW_RELEASE:
+                $this->_price = new NewReleasePrice();
+                break;
+            default:
+                throw new Exception("Incorrect Price Code");
+        }
     }
 
     public function getTitle(){
