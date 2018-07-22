@@ -33,8 +33,8 @@ class Customer{
                 $frequentRenterPoints++;
             
             //show figures for this rental
-            $result .= "\t".$each->getMovie()->getTitle()."\t".$thisAmount."\n";
-            $totalAmount += $thisAmount;
+            $result .= "\t".$each->getMovie()->getTitle()."\t".$each->getCharge()."\n";
+            $totalAmount += $each->getCharge();
         }
 
         //add footer lines
@@ -42,5 +42,5 @@ class Customer{
         $result .= "You earned ".$frequentRenterPoints." frequent renter point";
         return $result;
     }
-    
+
 }
