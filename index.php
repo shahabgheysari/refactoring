@@ -1,5 +1,6 @@
 <?php
-require('customer.php');
+require_once "vendor/autoload.php";
+
 
 //Movies
 $blcakPanther = new Movie("Blcak Panther",Movie::REGULAR);

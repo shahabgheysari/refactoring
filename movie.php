@@ -1,5 +1,4 @@
-<?php 
-require('price.php');
+<?php
 
 class Movie{
     

@@ -1,6 +1,4 @@
 <?php
-require("movie.php");
-require("rental.php");
 
 class Customer{
     private $_name;
